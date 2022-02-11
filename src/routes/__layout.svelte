@@ -24,20 +24,21 @@ import "carbon-components-svelte/css/white.css";
   let isSideNavOpen = false;
 </script>
 
-<Header company="IBM" platformName="Carbon Svelte" bind:isSideNavOpen>
+<Header company="Jco" platformName="Adam" bind:isSideNavOpen href="/" >
   <svelte:fragment slot="skip-to-content">
     <SkipToContent />
   </svelte:fragment>
   <HeaderNav>
-    <HeaderNavItem href="/" text="Link 1" />
-    <HeaderNavItem href="/" text="Link 2" />
-    <HeaderNavItem href="/" text="Link 3" />
-    <HeaderNavMenu text="Menu">
-      <HeaderNavItem href="/" text="Link 1" />
-      <HeaderNavItem href="/" text="Link 2" />
-      <HeaderNavItem href="/" text="Link 3" />
+    <HeaderNavItem href="/about" text="О программе" />
+    <HeaderNavItem href="/contact" text="Связаться" />
+    
+    <HeaderNavMenu text="Приветствую, Гость">
+      <HeaderNavItem href="/auth/login" text="Авторизация" />
+      <HeaderNavItem href="/auth/register" text="Регистрация" />
+      <HeaderNavItem href="/auth/profile" text="Профиль" />
+      <HeaderNavItem href="#" text="Выход" />
     </HeaderNavMenu>
-    <HeaderNavItem href="/" text="Link 4" />
+    
   </HeaderNav>
 </Header>
 
