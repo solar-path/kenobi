@@ -30,6 +30,7 @@
   },
   "type": "module",
   "dependencies": {
+    "cookie": "^0.4.2",
     "prisma": "^3.9.2"
   }
 }
