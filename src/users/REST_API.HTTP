@@ -1,0 +1,32 @@
+@baseURL = http://localhost:3000/users
+@content
+@contentType = application/json
+
+### LIST ALL USERS
+GET {{baseURL}} HTTP/1.1
+Content-Type: {{contentType}}
+
+### GET COMPANY BY ID
+GET {{baseURL}}/2 HTTP/1.1
+Content-Type: {{contentType}}
+
+### CREATE A COMPANY
+POST {{baseURL}} HTTP/1.1
+Content-Type: {{contentType}}
+
+{
+  "email" : "test@erg.kz",
+  "password" : "Miranda32"
+}
+
+### UPDATE COMPANY
+PATCH {{baseURL}}/3 HTTP/1.1
+Content-Type: {{contentType}}
+
+{
+  "email" : "nottest@gmail.com"  
+}
+
+### DELETE COMPANY
+DELETE {{baseURL}}/3 HTTP/1.1
+Content-Type: {{contentType}}
