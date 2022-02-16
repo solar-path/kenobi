@@ -1,4 +1,12 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { TodosService } from './todos.service';
 
 import { Prisma } from '@prisma/client';
@@ -19,16 +27,19 @@ export class TodosController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.todosService.findOne({id: +id});
+    return this.todosService.findOne({ id: +id });
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateTodoDto: Prisma.TodoUpdateInput) {
-    return this.todosService.update({id: +id}, updateTodoDto);
+  update(
+    @Param('id') id: string,
+    @Body() updateTodoDto: Prisma.TodoUpdateInput,
+  ) {
+    return this.todosService.update({ id: +id }, updateTodoDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.todosService.remove({id:+id});
+    return this.todosService.remove({ id: +id });
   }
 }

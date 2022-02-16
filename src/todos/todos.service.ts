@@ -4,10 +4,10 @@ import { PrismaService } from 'src/prisma.service';
 
 @Injectable()
 export class TodosService {
-  constructor(private prisma:PrismaService) {}
+  constructor(private prisma: PrismaService) {}
 
   async create(data: Prisma.TodoCreateInput) {
-    return await this.prisma.todo.create({data})
+    return await this.prisma.todo.create({ data });
   }
 
   async findAll() {
@@ -15,14 +15,17 @@ export class TodosService {
   }
 
   async findOne(where: Prisma.TodoWhereUniqueInput) {
-    return await this.prisma.todo.findUnique({where});
+    return await this.prisma.todo.findUnique({ where });
   }
 
-  async update(where: Prisma.TodoWhereUniqueInput, data: Prisma.TodoUpdateInput) {
-    return await this.prisma.todo.update({ data, where })
+  async update(
+    where: Prisma.TodoWhereUniqueInput,
+    data: Prisma.TodoUpdateInput,
+  ) {
+    return await this.prisma.todo.update({ data, where });
   }
 
   async remove(where: Prisma.TodoWhereUniqueInput) {
-    return await this.prisma.todo.delete({where})
+    return await this.prisma.todo.delete({ where });
   }
 }

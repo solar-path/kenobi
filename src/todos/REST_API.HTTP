@@ -1,4 +1,4 @@
-@baseURL = https://3000-solarpath-kenobi-ebxewjfaq8b.ws-eu31.gitpod.io/todos
+@baseURL = http://localhost:3000/todos
 @content
 @contentType = application/json
 
@@ -11,16 +11,16 @@ GET {{baseURL}}/2 HTTP/1.1
 Content-Type: {{contentType}}
 
 ### CREATE A COMPANY
-POST {{baseURL} HTTP/1.1
+POST {{baseURL}} HTTP/1.1
 Content-Type: {{contentType}}
 
 {
-  "title" : "fourth",       
+  "title" : "fourth",
   "description" : "lorum ipsum dolorum"
 }
 
 ### UPDATE COMPANY
-PATCH {{baseURL}}/4 HTTP/1.1
+PATCH {{baseURL}}/3 HTTP/1.1
 Content-Type: {{contentType}}
 
 {
@@ -28,5 +28,5 @@ Content-Type: {{contentType}}
 }
 
 ### DELETE COMPANY
-DELETE {{baseURL}}/5 HTTP/1.1
+DELETE {{baseURL}}/2 HTTP/1.1
 Content-Type: {{contentType}}
