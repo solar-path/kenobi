@@ -3,15 +3,15 @@
 @contentType = application/json
 
 ### LIST ALL TODOS
-GET {{baseURL}}/todo HTTP/1.1
+GET {{baseURL}} HTTP/1.1
 Content-Type: {{contentType}}
 
 ### GET COMPANY BY ID
-GET {{baseURL}}/todo/2 HTTP/1.1
+GET {{baseURL}}/2 HTTP/1.1
 Content-Type: {{contentType}}
 
 ### CREATE A COMPANY
-POST {{baseURL}}/todo HTTP/1.1
+POST {{baseURL} HTTP/1.1
 Content-Type: {{contentType}}
 
 {
@@ -20,7 +20,7 @@ Content-Type: {{contentType}}
 }
 
 ### UPDATE COMPANY
-PATCH {{baseURL}}/todo/4 HTTP/1.1
+PATCH {{baseURL}}/4 HTTP/1.1
 Content-Type: {{contentType}}
 
 {
@@ -28,5 +28,5 @@ Content-Type: {{contentType}}
 }
 
 ### DELETE COMPANY
-DELETE {{baseURL}}/todo/5 HTTP/1.1
+DELETE {{baseURL}}/5 HTTP/1.1
 Content-Type: {{contentType}}

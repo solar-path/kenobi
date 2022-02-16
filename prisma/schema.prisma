@@ -15,5 +15,12 @@ model Todo {
   createdAt   DateTime @default(now())
   title       String
   description String?
+}
 
+model User {
+  id       Int     @id @default(autoincrement())
+  name     String?
+  username String  @unique
+  password String
+  email    String? @unique
 }
