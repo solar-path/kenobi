@@ -7,25 +7,69 @@ export class TodosService {
   constructor(private prisma: PrismaService) {}
 
   async create(data: Prisma.TodoCreateInput) {
-    return await this.prisma.todo.create({ data });
+    try {
+      const record = await this.prisma.todo.create({ data });
+      if (record) {
+        return record;
+      } else {
+        return 'not found';
+      }
+    } catch (error) {
+      if (error instanceof Prisma.PrismaClientKnownRequestError) {
+        if (error.code === 'P2002') {
+          return 'There is a unique constraint violation';
+        }
+      }
+    }
   }
 
   async findAll() {
-    return await this.prisma.todo.findMany();
+    try {
+      return await this.prisma.todo.findMany();
+    } catch (error) {
+      return error;
+    }
   }
 
   async findOne(where: Prisma.TodoWhereUniqueInput) {
-    return await this.prisma.todo.findUnique({ where });
+    try {
+      const record = await this.prisma.todo.findUnique({ where });
+      if (record) {
+        return record;
+      } else {
+        return 'not found';
+      }
+    } catch (error) {
+      return error;
+    }
   }
 
   async update(
     where: Prisma.TodoWhereUniqueInput,
     data: Prisma.TodoUpdateInput,
   ) {
-    return await this.prisma.todo.update({ data, where });
+    try {
+      const record = await this.prisma.todo.update({ data, where });
+      if (record) {
+        return record;
+      } else {
+        return 'not found';
+      }
+    } catch (error) {
+      return error;
+    }
   }
 
   async remove(where: Prisma.TodoWhereUniqueInput) {
-    return await this.prisma.todo.delete({ where });
+    try {
+      const record = await this.prisma.todo.delete({ where });
+      if (record) {
+        return record;
+      } else {
+        return 'not found';
+      }
+    } catch (error) {
+      return error;
+    }
   }
 }

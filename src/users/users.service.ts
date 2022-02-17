@@ -8,14 +8,18 @@ export class UsersService {
 
   async create(data: Prisma.UserCreateInput) {
     try {
-      const records = await this.prisma.user.create({ data });
-      if (records) {
-        return records;
+      const record = await this.prisma.user.create({ data });
+      if (record) {
+        return record;
       } else {
         return 'not found';
       }
     } catch (error) {
-      return error;
+      if (error instanceof Prisma.PrismaClientKnownRequestError) {
+        if (error.code === 'P2002') {
+          return 'There is a unique constraint violation';
+        }
+      }
     }
   }
 
