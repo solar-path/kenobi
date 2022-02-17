@@ -6,11 +6,11 @@
 GET {{baseURL}} HTTP/1.1
 Content-Type: {{contentType}}
 
-### GET COMPANY BY ID
+### GET USER BY ID
 GET {{baseURL}}/2 HTTP/1.1
 Content-Type: {{contentType}}
 
-### CREATE A COMPANY
+### CREATE A USER
 POST {{baseURL}} HTTP/1.1
 Content-Type: {{contentType}}
 
@@ -19,7 +19,7 @@ Content-Type: {{contentType}}
   "password" : "Miranda32"
 }
 
-### UPDATE COMPANY
+### UPDATE USER
 PATCH {{baseURL}}/3 HTTP/1.1
 Content-Type: {{contentType}}
 
@@ -27,6 +27,6 @@ Content-Type: {{contentType}}
   "email" : "nottest@gmail.com"  
 }
 
-### DELETE COMPANY
+### DELETE USER
 DELETE {{baseURL}}/3 HTTP/1.1
 Content-Type: {{contentType}}

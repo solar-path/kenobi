@@ -15,10 +15,13 @@ model Todo {
   createdAt   DateTime @default(now())
   title       String
   description String?
+  updatedAt   DateTime @updatedAt
 }
 
 model User {
-  id       Int     @id @default(autoincrement())
-  password String
-  email    String @unique
+  id        Int      @id @default(autoincrement())
+  password  String
+  email     String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }

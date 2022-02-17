@@ -7,25 +7,65 @@ export class UsersService {
   constructor(private prisma: PrismaService) {}
 
   async create(data: Prisma.UserCreateInput) {
-    return await this.prisma.user.create({ data });
+    try {
+      const records = await this.prisma.user.create({ data });
+      if (records) {
+        return records;
+      } else {
+        return 'not found';
+      }
+    } catch (error) {
+      return error;
+    }
   }
 
   async findAll() {
-    return await this.prisma.user.findMany();
+    try {
+      return await this.prisma.user.findMany();
+    } catch (error) {
+      return error;
+    }
   }
 
   async findOne(where: Prisma.UserWhereUniqueInput) {
-    return await this.prisma.user.findUnique({ where });
+    try {
+      const record = await this.prisma.user.findUnique({ where });
+      if (record) {
+        return record;
+      } else {
+        return 'not found';
+      }
+    } catch (error) {
+      return error;
+    }
   }
 
   async update(
     where: Prisma.UserWhereUniqueInput,
     data: Prisma.UserUpdateInput,
   ) {
-    return await this.prisma.user.update({ data, where });
+    try {
+      const record = await this.prisma.user.update({ data, where });
+      if (record) {
+        return record;
+      } else {
+        return 'not found';
+      }
+    } catch (error) {
+      return error;
+    }
   }
 
   async remove(where: Prisma.UserWhereUniqueInput) {
-    return await this.prisma.user.delete({ where });
+    try {
+      const record = await this.prisma.user.delete({ where });
+      if (record) {
+        return record;
+      } else {
+        return 'not found';
+      }
+    } catch (error) {
+      return error;
+    }
   }
 }
