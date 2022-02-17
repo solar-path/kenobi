@@ -31,7 +31,22 @@ export class UsersService {
     }
   }
 
-  async findOne(where: Prisma.UserWhereUniqueInput) {
+  async findOneByEmail(credentials: Prisma.UserWhereUniqueInput) {
+    try {
+      const record = await this.prisma.user.findUnique({
+        where: { email: credentials.email },
+      });
+      if (record) {
+        return record;
+      } else {
+        return 'not found';
+      }
+    } catch (error) {
+      return error;
+    }
+  }
+
+  async findOneByID(where: Prisma.UserWhereUniqueInput) {
     try {
       const record = await this.prisma.user.findUnique({ where });
       if (record) {
