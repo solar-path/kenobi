@@ -54,6 +54,7 @@ model Audit {
   LegalEntityID       Int?
   deadlineToResolve   String?
   EDMS                String?
+  url                 String?
   responsible         String?
   status              String?
 }
