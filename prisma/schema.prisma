@@ -16,6 +16,10 @@ model Todo {
   title       String
   description String?
   updatedAt   DateTime @updatedAt
+  startDate   DateTime
+  endDate     DateTime
+  responsible String?
+  status      String?
 }
 
 model User {
@@ -24,4 +28,32 @@ model User {
   email     String   @unique
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+}
+
+model Company {
+  id            Int       @id @default(autoincrement())
+  legalentity   String    @unique
+  code          String    @unique
+  address       String?
+  headquarterID Int?
+  headquarter   Company?  @relation("HeadquarterBranches", fields: [headquarterID], references: [id])
+  branches      Company[] @relation("HeadquarterBranches")
+  bin           String?   @unique
+  Audit         Audit[]
+}
+
+model Audit {
+  id                  Int      @id @default(autoincrement())
+  reportTitle         String?
+  reportID            String?
+  slug                String?
+  observation         String?
+  recommendation      String?
+  dateIdentified      String?
+  companyIdentifiedIn Company? @relation(fields: [LegalEntityID], references: [id])
+  LegalEntityID       Int?
+  deadlineToResolve   String?
+  EDMS                String?
+  responsible         String?
+  status              String?
 }
