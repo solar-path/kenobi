@@ -32,7 +32,7 @@ $ npm run start:prod
 > git add README.md
 > git commit -m "first commit"
 > git branch -M main
-> git remote add origin https://github.com/solar-path/adam.git
+> git remote add origin https://github.com/solar-path/kenobi.git
 > git push -u origin main
 ```
 
