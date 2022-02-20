@@ -40,18 +40,18 @@
     <DataTableSkeleton />
   {:else}
     <DataTable
-      title="Мониторинг исполнения рекомендаций ДВАиКР"
+      title="Внутренний аудит"
       zebra
       sortable
       pageSize={pagination.pageSize}
       page={pagination.page}
-      description="Перечень юридических лиц в периметры СВК"
+      description="Мониторинг исполнения рекомендаций ДВАиКР"
       headers={[
         { key: 'id', value: '#' },
         { key: 'reportTitle', value: 'Отчет' },
         { key: 'reportID', value: 'Код' },
         { key: 'slug', value: 'EDMS' },
-        { key: 'LegalEntityID', value: 'Компания'}
+        { key: 'companyIdentifiedIn', value: 'Компания'}
       ]}
       rows={companies}> 
   
@@ -72,6 +72,8 @@
       <svelte:fragment slot="cell" let:row let:cell>
       {#if cell.key === "caption"}
         <Link href="/#/companies/{row.id}">{cell.value}</Link>
+      {:else if cell.key==="companyIdentifiedIn"}
+        {cell.value.code}   
       {:else}
         {cell.value}
       {/if}
