@@ -1,0 +1,32 @@
+@baseURL = http://localhost:3000/audits
+@content
+@contentType = application/json
+
+### LIST ALL COMPANIES
+GET {{baseURL}} HTTP/1.1
+Content-Type: {{contentType}}
+
+### GET COMPANY BY ID
+GET {{baseURL}}/2 HTTP/1.1
+Content-Type: {{contentType}}
+
+### CREATE A COMPANY
+POST {{baseURL}} HTTP/1.1
+Content-Type: {{contentType}}
+
+{
+  "reportTitle" : "test",
+  "reportID": "123"
+}
+
+### UPDATE COMPANY
+PATCH {{baseURL}}/214 HTTP/1.1
+Content-Type: {{contentType}}
+
+{
+  "reportTitle" : "test#2222"  
+}
+
+### DELETE COMPANY
+DELETE {{baseURL}}/214 HTTP/1.1
+Content-Type: {{contentType}}
