@@ -1,26 +1,71 @@
 import { Injectable } from '@nestjs/common';
-import { CreateAuditDto } from './dto/create-audit.dto';
-import { UpdateAuditDto } from './dto/update-audit.dto';
+import { Prisma } from '@prisma/client';
+import { PrismaService } from 'src/prisma.service';
 
 @Injectable()
 export class AuditsService {
-  create(createAuditDto: CreateAuditDto) {
-    return 'This action adds a new audit';
+  constructor(private prisma: PrismaService) {}
+
+  async create(data: Prisma.AuditCreateInput) {
+    try {
+      const record = await this.prisma.audit.create({ data });
+      if (record) {
+        return record;
+      } else {
+        return 'not found';
+      }
+    } catch (error) {
+      return error;
+    }
   }
 
-  findAll() {
-    return `This action returns all audits`;
+  async findAll() {
+    try {
+      return await this.prisma.audit.findMany();
+    } catch (error) {
+      return error;
+    }
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} audit`;
+  async findOne(where: Prisma.AuditWhereUniqueInput) {
+    try {
+      const record = await this.prisma.audit.findUnique({ where });
+      if (record) {
+        return record;
+      } else {
+        return 'not found';
+      }
+    } catch (error) {
+      return error;
+    }
   }
 
-  update(id: number, updateAuditDto: UpdateAuditDto) {
-    return `This action updates a #${id} audit`;
+  async update(
+    where: Prisma.AuditWhereUniqueInput,
+    data: Prisma.AuditUpdateInput,
+  ) {
+    try {
+      const record = await this.prisma.audit.update({ data, where });
+      if (record) {
+        return record;
+      } else {
+        return 'not found';
+      }
+    } catch (error) {
+      return error;
+    }
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} audit`;
+  async remove(where: Prisma.AuditWhereUniqueInput) {
+    try {
+      const record = await this.prisma.audit.delete({ where });
+      if (record) {
+        return record;
+      } else {
+        return 'not found';
+      }
+    } catch (error) {
+      return error;
+    }
   }
 }
