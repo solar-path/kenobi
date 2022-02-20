@@ -17,6 +17,10 @@
       await console.log(credentials)
     }
   </script>
+
+<svelte:head>
+  <title>Авторизация</title>
+</svelte:head>
   
   <Form on:submit={submitCredentials}>
     <h3>Авторизация</h3>

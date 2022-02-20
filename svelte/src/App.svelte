@@ -27,7 +27,13 @@ import Register from "./routes/auth/register.svelte";
 import Login from "./routes/auth/login.svelte";
 import Profile from "./routes/auth/profile.svelte";
 import Forgot from "./routes/auth/forgot.svelte";
-import Manual from "./routes/auth/manual.svelte";
+import Manual from "./routes/manual.svelte";
+import Companies from "./routes/admin/companies/Companies.svelte";
+import CompanyDetail from "./routes/admin/companies/CompanyDetail.svelte";
+import CompanyForm from "./routes/admin/companies/CompanyForm.svelte";
+import AuditDetail from "./routes/admin/audits/AuditDetail.svelte";
+import AuditForm from "./routes/admin/audits/AuditForm.svelte";
+import Audits from "./routes/admin/audits/Audits.svelte";
 
   
   const routes = {
@@ -39,6 +45,12 @@ import Manual from "./routes/auth/manual.svelte";
     '/auth/register': Register,
     '/auth/profile': Profile,
     '/auth/forgot': Forgot,
+    '/admin/LE/companies': Companies,
+    '/admin/LE/companyDetail': CompanyDetail,
+    '/admin/LE/companyForm': CompanyForm,
+    '/admin/IA/audits': Audits,
+    '/admin/IA/auditDetails': AuditDetail,
+    '/admin/IA/auditForm': AuditForm,
 
     '*': NotFound
   }
@@ -65,15 +77,9 @@ import Manual from "./routes/auth/manual.svelte";
 
 <SideNav bind:isOpen={isSideNavOpen}>
   <SideNavItems>
-    <SideNavLink text="Link 1"/>
-    <SideNavLink text="Link 2" />
+    <SideNavLink href='#/admin/LE/companies' text="Юридические лица"/>
+    <SideNavLink href='#/admin/IA/audits' text="Внутренний аудит"/>
     <SideNavLink text="Link 3" />
-    <SideNavMenu text="Приветствую, Гость">
-      <SideNavMenuItem href="#/auth/login" text="Авторизация" />
-      <SideNavMenuItem href="#/auth/register" text="Регистрация" />
-      <SideNavMenuItem href="#/auth/profile" text="Профиль" />
-      <SideNavMenuItem text="Выход" />
-    </SideNavMenu>
     <SideNavDivider />
     <SideNavLink text="Link 4" />
   </SideNavItems>

@@ -17,6 +17,10 @@
     }
   </script>
   
+  <svelte:head>
+    <title>Регистрация</title>
+</svelte:head>
+
   <Form on:submit={submitCredentials}>
     <h3>Регистрация</h3>
    

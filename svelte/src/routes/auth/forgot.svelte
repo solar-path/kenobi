@@ -17,6 +17,10 @@
       console.log(credentials)
     }
   </script>
+
+<svelte:head>
+  <title>Забыли пароль?</title>
+</svelte:head>
   
   <Form on:submit={submitCredentials()}>
     <h3>Забыли пароль?</h3>
