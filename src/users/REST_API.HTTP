@@ -10,14 +10,24 @@ Content-Type: {{contentType}}
 GET {{baseURL}}/2 HTTP/1.1
 Content-Type: {{contentType}}
 
-### CREATE A USER
-POST {{baseURL}} HTTP/1.1
+### REGISTER
+POST {{baseURL}}/register HTTP/1.1
 Content-Type: {{contentType}}
 
 {
-  "email" : "test1@erg.kz",
+  "email" : "denis.kulikov@erg.kz",
   "password" : "Miranda32"
 }
+
+### LOGIN 
+POST {{baseURL}}/login HTTP/1.1
+Content-Type: {{contentType}}
+
+{
+  "email" : "denis.kulikov@erg.kz",
+  "password" : "Miranda32"
+}
+
 
 ### UPDATE USER
 PATCH {{baseURL}}/3 HTTP/1.1

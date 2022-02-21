@@ -7,7 +7,7 @@ export class AuthService {
   constructor(private userService: UsersService) {}
 
   async validateUser(credentials: Prisma.UserWhereUniqueInput): Promise<any> {
-    const user = await this.userService.findOneByEmail(credentials);
+    const user = await this.userService.findOneByID(credentials);
     return user;
   }
 

@@ -1,19 +1,23 @@
 import { Injectable } from '@nestjs/common';
 import { Prisma } from '@prisma/client';
 import { PrismaService } from 'src/prisma.service';
+import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class UsersService {
   constructor(private prisma: PrismaService) {}
 
-  async create(data: Prisma.UserCreateInput) {
+  async register(data: Prisma.UserCreateInput) {
     try {
-      const record = await this.prisma.user.create({ data });
-      if (record) {
-        return record;
-      } else {
-        return 'not found';
-      }
+      await this.prisma.user.create({
+        data: {
+          email: data.email,
+          password: await bcrypt.hash(data.password, await bcrypt.genSalt()),
+          createdAt: data.createdAt,
+          updatedAt: data.updatedAt,
+        },
+      });
+      return `User ${data.email} has being registered`;
     } catch (error) {
       if (error instanceof Prisma.PrismaClientKnownRequestError) {
         if (error.code === 'P2002') {
@@ -23,24 +27,23 @@ export class UsersService {
     }
   }
 
-  async findAll() {
+  async login(credentials: Prisma.UserCreateInput) {
     try {
-      return await this.prisma.user.findMany();
+      const { email, password } = credentials;
+      // find the user by email in database
+      const user = await this.prisma.user.findUnique({ where: { email } });
+      // if user exists && passwords matches
+      if (user && (await bcrypt.compare(password, user.password))) {
+        return { id: user.id, email: user.email };
+      } else return null;
     } catch (error) {
       return error;
     }
   }
 
-  async findOneByEmail(credentials: Prisma.UserWhereUniqueInput) {
+  async findAll() {
     try {
-      const record = await this.prisma.user.findUnique({
-        where: { email: credentials.email },
-      });
-      if (record) {
-        return record;
-      } else {
-        return 'not found';
-      }
+      return await this.prisma.user.findMany();
     } catch (error) {
       return error;
     }
