@@ -10,7 +10,7 @@ import {
 import { Prisma } from '@prisma/client';
 import { UsersService } from './users.service';
 
-@Controller('users')
+@Controller('auth')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
