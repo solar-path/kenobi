@@ -2,10 +2,12 @@ import { Injectable } from '@nestjs/common';
 import { Prisma } from '@prisma/client';
 import { PrismaService } from 'src/prisma.service';
 import * as bcrypt from 'bcrypt';
+import { JwtModule, JwtService } from '@nestjs/jwt';
+import { JwtPayload } from './jwt-payload.interface';
 
 @Injectable()
 export class UsersService {
-  constructor(private prisma: PrismaService) {}
+  constructor(private prisma: PrismaService, private jwtService: JwtService) {}
 
   async register(data: Prisma.UserCreateInput) {
     try {
@@ -34,7 +36,9 @@ export class UsersService {
       const user = await this.prisma.user.findUnique({ where: { email } });
       // if user exists && passwords matches
       if (user && (await bcrypt.compare(password, user.password))) {
-        return { id: user.id, email: user.email };
+        const payload: JwtPayload = { email };
+        const accessToken = await this.jwtService.sign(payload);
+        return { id: user.id, email: user.email, accessToken: accessToken };
       } else return null;
     } catch (error) {
       return error;
