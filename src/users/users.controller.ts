@@ -33,11 +33,13 @@ export class UsersController {
   }
 
   @Get(':id')
+  @UseGuards(AuthGuard())
   findOne(@Param('id') id: string) {
     return this.usersService.findOneByID({ id: +id });
   }
 
   @Patch(':id')
+  @UseGuards(AuthGuard())
   update(
     @Param('id') id: string,
     @Body() updateUserDto: Prisma.UserUpdateInput,
@@ -46,6 +48,7 @@ export class UsersController {
   }
 
   @Delete(':id')
+  @UseGuards(AuthGuard())
   remove(@Param('id') id: string) {
     return this.usersService.remove({ id: +id });
   }

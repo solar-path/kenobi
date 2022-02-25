@@ -6,11 +6,14 @@ import {
   Patch,
   Param,
   Delete,
+  UseGuards,
 } from '@nestjs/common';
 import { CompaniesService } from './companies.service';
 import { Prisma } from '@prisma/client';
+import { AuthGuard } from '@nestjs/passport';
 
 @Controller('companies')
+@UseGuards(AuthGuard())
 export class CompaniesController {
   constructor(private readonly companiesService: CompaniesService) {}
 

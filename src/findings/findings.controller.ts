@@ -6,10 +6,13 @@ import {
   Patch,
   Param,
   Delete,
+  UseGuards,
 } from '@nestjs/common';
+import { AuthGuard } from '@nestjs/passport';
 import { FindingsService } from './findings.service';
 
 @Controller('findings')
+@UseGuards(AuthGuard())
 export class FindingsController {
   constructor(private readonly findingsService: FindingsService) {}
 
