@@ -6,7 +6,9 @@ import {
   Patch,
   Param,
   Delete,
+  UseGuards,
 } from '@nestjs/common';
+import { AuthGuard } from '@nestjs/passport';
 import { Prisma } from '@prisma/client';
 import { UsersService } from './users.service';
 
@@ -25,6 +27,7 @@ export class UsersController {
   }
 
   @Get()
+  @UseGuards(AuthGuard())
   findAll() {
     return this.usersService.findAll();
   }

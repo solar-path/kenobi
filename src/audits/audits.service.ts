@@ -26,21 +26,12 @@ export class AuditsService {
           id: true,
           reportTitle: true,
           reportID: true,
-          slug: true,
-          observation: true,
-          recommendation: true,
-          dateIdentified: true,
           companyIdentifiedIn: {
             select: {
               code: true,
             },
           },
           LegalEntityID: true,
-          deadlineToResolve: true,
-          EDMS: true,
-          url: true,
-          responsible: true,
-          status: true,
         },
       });
     } catch (error) {

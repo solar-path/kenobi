@@ -6,15 +6,18 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
-  url      = "file:./dev.db"
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+
+  // provider = "sqlite"
+  // url      = "file:./dev.db"
 }
 
 model Todo {
   id          Int      @id @default(autoincrement())
-  createdAt   DateTime @default(now())
   title       String
   description String?
+  createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
   startDate   DateTime
   endDate     DateTime
@@ -44,21 +47,34 @@ model Company {
   branches      Company[] @relation("HeadquarterBranches")
   bin           String?   @unique
   Audit         Audit[]
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
 }
 
 model Audit {
+  id                  Int       @id @default(autoincrement())
+  reportTitle         String?   @unique
+  reportID            String?   @unique
+  companyIdentifiedIn Company?  @relation(fields: [LegalEntityID], references: [id])
+  LegalEntityID       Int?
+  createdAt           DateTime  @default(now())
+  updatedAt           DateTime  @updatedAt
+  findings            Finding[]
+}
+
+model Finding {
   id                  Int      @id @default(autoincrement())
-  reportTitle         String?
-  reportID            String?
   slug                String?
   observation         String?
   recommendation      String?
   dateIdentified      String?
-  companyIdentifiedIn Company? @relation(fields: [LegalEntityID], references: [id])
-  LegalEntityID       Int?
   deadlineToResolve   String?
   EDMS                String?
   url                 String?
   responsible         String?
   status              String?
+  belongToAuditReport Audit?   @relation(fields: [AuditReportID], references: [id])
+  AuditReportID       Int?
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
 }
