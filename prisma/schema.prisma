@@ -54,7 +54,7 @@ model Company {
 model Audit {
   id                  Int       @id @default(autoincrement())
   reportTitle         String?   @unique
-  reportID            String?   @unique
+  reportID            String?   @unique @default(uuid())
   companyIdentifiedIn Company?  @relation(fields: [LegalEntityID], references: [id])
   LegalEntityID       Int?
   createdAt           DateTime  @default(now())

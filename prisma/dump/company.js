@@ -13,18 +13,22 @@ let companyData = [
   {
     legalentity: 'AOK - ПАВЛОДАРСКИЙ АЛЮМИНИЕВЫЙ ЗАВОД',
     code: 'AOK-ПАЗ',
+    headquarterID: 2,
   },
   {
     legalentity: 'AOK - ТЭЦ-1',
     code: 'AOK-ТЭЦ',
+    headquarterID: 2,
   },
   {
     legalentity: 'AOK - КБРУ',
     code: 'AOK-КБРУ',
+    headquarterID: 2,
   },
   {
     legalentity: 'AOK - ТБРУ',
     code: 'AOK-ТБРУ',
+    headquarterID: 2,
   },
   {
     legalentity: 'KZ104 - TNC Kazchrome JSC KZT',
@@ -33,18 +37,22 @@ let companyData = [
   {
     legalentity: 'Kazchrome АКТЮБИНСКИЙ ЗАВОД ФЕРРОСПЛАВОВ',
     code: 'Kazchrome - АктЗФ',
+    headquarterID: 7,
   },
   {
     legalentity: 'Kazchrome АКСУСКИЙ ЗАВОД ФЕРРОСПЛАВОВ',
     code: 'Kazchrome - АкСЗФ',
+    headquarterID: 7,
   },
   {
     legalentity: 'Kazchrome - ДГОК',
     code: 'Kazchrome - ДГОК',
+    headquarterID: 7,
   },
   {
     legalentity: 'Kazchrome - РУКМ',
     code: 'Kazchrome - РУКМ',
+    headquarterID: 7,
   },
   {
     legalentity: 'KZ104A - Akzhar Chrome LLP KZT',

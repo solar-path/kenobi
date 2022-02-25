@@ -1,15 +1,15 @@
-const { PrismaClient } = require("@prisma/client");
-const auditData = require("./audit");
+const { PrismaClient } = require('@prisma/client');
+const auditData = require('./audit');
 
 const prisma = new PrismaClient();
 
 async function main() {
-// Audits
+  // Audits
   for (let item of auditData) {
     await prisma.audit.create({ data: item });
     console.log(item);
   }
-    console.log("AUDITS ARE SEEDED");
+  console.log('AUDITS ARE SEEDED');
 }
 
 main()
