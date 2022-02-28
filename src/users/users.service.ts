@@ -38,12 +38,16 @@ export class UsersService {
       if (user && (await bcrypt.compare(password, user.password))) {
         const payload: JwtPayload = { email };
         const accessToken = await this.jwtService.sign(payload);
-        return { id: user.id, email: user.email, accessToken: accessToken };
+        return { id: user.id, email: user.email, accessToken };
       } else return null;
     } catch (error) {
       return error;
     }
   }
+
+  // async logout() {}
+
+  // async refreshToken() {}
 
   async findAll() {
     try {

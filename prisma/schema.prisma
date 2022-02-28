@@ -37,6 +37,7 @@ model User {
   todos     Todo[]
 }
 
+
 model Company {
   id            Int       @id @default(autoincrement())
   legalentity   String    @unique
